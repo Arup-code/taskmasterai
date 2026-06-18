@@ -17,3 +17,25 @@ spring:
       hibernate:
         format_sql: true
 
+server:
+  port: 8080
+
+jwt:
+  secret: ${JWT_SECRET}
+  access-token-expiry: ${JWT_EXPIRATION_MS}
+  refresh-token-expiry: ${JWT_REFRESH_TOKEN_DAYS}
+
+application:
+  url: ${APPLICATION_URL}
+
+springdoc:
+  api-docs:
+    enabled: true
+
+
+management:
+  endpoint:
+    health:
+      access: read_only
+
+

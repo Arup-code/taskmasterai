@@ -10,12 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TaskmasteraiApplication {
 
     public static void main(String[] args) {
+
+        //** Load environment variables from .env file
         Dotenv dotenv = Dotenv.configure().ignoreIfMissing().load();
         try {
             dotenv.entries().forEach(entry -> System.setProperty(entry.getKey(), entry.getValue()));
         } catch (Exception e) {
             log.error("Error loading .env file: {}", e.getMessage());
         }
+
         SpringApplication.run(TaskmasteraiApplication.class, args);
     }
 
