@@ -68,7 +68,7 @@ public class User {
     private Set<Invite> invites;
 
     @OneToMany(mappedBy = "user", targetEntity = TeamMember.class, cascade = CascadeType.ALL)
-    private Set<Team> teams;
+    private Set<TeamMember> teams;
 
     private LocalDateTime created_at;
 

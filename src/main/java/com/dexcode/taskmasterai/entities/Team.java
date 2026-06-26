@@ -1,7 +1,10 @@
 package com.dexcode.taskmasterai.entities;
 
-import com.dexcode.taskmasterai.dto.TaskDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,9 +24,14 @@ public class Team {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull
+    @NotEmpty
+    @NotBlank
+    @Size(min = 3, max = 150, message = "Team name must be between 3 and 150 characters")
     private String name;
 
-    private Set<TaskDTO> tasks;
+    @OneToMany(mappedBy = "team")
+    private Set<Task> tasks;
 
     @OneToMany(mappedBy = "team")
     private Set<Invite> invites;

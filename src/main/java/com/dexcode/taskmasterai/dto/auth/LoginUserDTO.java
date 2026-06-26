@@ -1,4 +1,4 @@
-package com.dexcode.taskmasterai.dto;
+package com.dexcode.taskmasterai.dto.auth;
 
 import lombok.Data;
 

@@ -30,12 +30,15 @@ public class AuthConfig {
             .authorizeHttpRequests(auth -> auth
                 // Public auth endpoints — no token needed
                 .requestMatchers(
-                    "/api/auth/register",
+                    "/api/auth/signup",
                     "/api/auth/login",
+                    "/api/auth/verify",
+                    "/api/auth/resend-verification",
+                    "/api/auth/forgot-password",
+                    "/api/auth/reset-password",
                     "/api/auth/refresh",
                     "/api/docs/",
                     "/api/swagger-ui.html",
-                    "/api/auth/verify/",
                     "/v3/**",
                     "/swagger-ui/**"
                 ).permitAll()

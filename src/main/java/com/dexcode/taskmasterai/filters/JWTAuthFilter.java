@@ -65,10 +65,11 @@ public class JWTAuthFilter extends OncePerRequestFilter {
 
                 Claims expiredClaims = jwtUtil.getClaimsFromToken(token, true);
                 String refreshToken = expiredClaims.get("refresh_token", String.class);
+                Long user_id = Long.valueOf(expiredClaims.get("userId", String.class));
 
                 if (sessionManagerService.checkUserSessionValidity(refreshToken)) {
 
-                    String newAccessToken = jwtService.generateNewAuthToken(Long.parseLong(expiredClaims.get("userId", String.class)), refreshToken);
+                    String newAccessToken = jwtService.generateNewAuthToken(user_id, refreshToken);
 
                     response.setHeader("X-New-Access-Token", newAccessToken);
 
